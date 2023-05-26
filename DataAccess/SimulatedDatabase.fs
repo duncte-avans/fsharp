@@ -48,7 +48,7 @@ let mutable private stockData : StockData =
         Content =
             Map.ofList [
                 bins.[1], products.[0]
-                bins.[3], products.[1]
+                bins.[3], products.[0]
                 bins.[4], products.[2]
             ]
         BinStructure =

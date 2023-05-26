@@ -14,16 +14,22 @@ type Product = Product of PartNumber
 /// All products in the Storage Machine are counted by piece.
 type Quantity = int
 
+let getTheContent b = b.Content
+
 /// All products in the given bins.
 let allProducts bins : List<Product> =
     bins
-    |> Seq.choose (failwith "Exercise 0: Fill this in to complete this function. Use type inference as a guide.")
+    |> List.distinct
+    |> List.filter Bin.isNotEmpty
+    |> Seq.choose getTheContent
     |> Seq.map Product
     |> Seq.toList
-// TODO: Exercise 0: what if a bin occurs multiple times in the input?
+// TODO: Exercise 0: what if a bin occurs multiple times in the input? List.distinct
 
 /// Total quantity of each of the provided products.
 let totalQuantity products : Map<Product, Quantity> =
     products
-    |> failwith "Exercise 0: Fill this in to complete this function. Use type inference as a guide."
+    // |> Seq.groupBy id
+    // |> Seq.map (fun (p, l) -> p, Seq.length l)
+    |> Seq.countBy id
     |> Map.ofSeq
