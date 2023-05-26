@@ -2,14 +2,10 @@
 module StorageMachine.Stock.Stock
 
 open StorageMachine
-open Bin
+open StorageMachine.Bins.Bin
+open StorageMachine.Bins
 open Stock
-
-/// Defines data access operations for stock functionality.
-type IStockDataAccess =
-
-    /// Retrieve all bins currently stored in the Storage Machine.
-    abstract RetrieveAllBins : unit -> List<Bin>
+open StorageMachine.DataAccess
 
 /// An overview of all bins currently stored in the Storage Machine.
 let binOverview (dataAccess : IStockDataAccess) : List<Bin> =

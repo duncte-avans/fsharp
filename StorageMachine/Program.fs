@@ -12,6 +12,7 @@ open Microsoft.AspNetCore.Hosting
 open StorageMachine
 open StorageMachine.Stock
 open StorageMachine.Repacking
+open StorageMachine.DataAccess
 
 /// Assembles the ASP.NET "application" from various framework modules.
 let private configureApp (app: IApplicationBuilder) =
@@ -36,7 +37,7 @@ let private configureServices (services: IServiceCollection) =
         .AddAuthentication(fun options -> options.DefaultScheme <- CookieAuthenticationDefaults.AuthenticationScheme)
         .Services
         // Data access implementation of the Stock component
-        .AddSingleton<Stock.IStockDataAccess>(Stock.stockPersistence)
+        .AddSingleton<IStockDataAccess>(Stock.stockPersistence)
         // Data access implementation of the Repacking component
         .AddSingleton<Repacking.IBinTreeDataAccess>(Repacking.binTreeDataAccess)
         .AddGiraffe()

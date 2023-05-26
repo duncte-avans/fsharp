@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="IStockDataAccess.fs" />
+    <Compile Include="Bin.fs" />
     <Compile Include="Stock.fs" />
     <Compile Include="Repacking.fs" />
   </ItemGroup>

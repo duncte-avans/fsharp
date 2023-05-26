@@ -2,8 +2,10 @@
 module StorageMachine.Stock.Stock
 
 open StorageMachine
-open Bin
+open StorageMachine.Bins.Bin
 open Stock
+open StorageMachine.SimulatedDatabase
+open StorageMachine.DataAccess
 
 /// Data access operations of the Stock component implemented using the simulated in-memory DB.
 let stockPersistence = { new IStockDataAccess with
@@ -18,4 +20,11 @@ let stockPersistence = { new IStockDataAccess with
         )
         |> Set.toList
 
+    member this.StoreBin bin =
+           let res = SimulatedDatabase.storeBin bin
+           match res with
+           | Ok a -> Ok a
+           | Error e ->
+               match e with
+               | BinAlreadyStored -> Error "This bin is already stored!"
 }

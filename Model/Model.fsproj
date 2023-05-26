@@ -9,7 +9,7 @@
   <ItemGroup>
     <Compile Include="Validation.fs" />
     <Compile Include="Common.fs" />
-    <Compile Include="Stock\Bin.fs" />
+    <Compile Include="Bins\Bin.fs" />
     <Compile Include="Stock\Stock.fs" />
     <Compile Include="Repacking\BinTree.fs" />
   </ItemGroup>

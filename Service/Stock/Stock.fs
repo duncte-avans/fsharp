@@ -6,13 +6,15 @@ open Microsoft.AspNetCore.Http
 open Thoth.Json.Net
 open Thoth.Json.Giraffe
 open Stock
+open StorageMachine.Bins.Serialization
+open StorageMachine.DataAccess
 
 /// An overview of all bins currently stored in the Storage Machine.
 let binOverview (next: HttpFunc) (ctx: HttpContext) =
     task {
         let dataAccess = ctx.GetService<IStockDataAccess> ()
         let bins = Stock.binOverview dataAccess
-        return! ThothSerializer.RespondJsonSeq bins Serialization.encoderBin next ctx 
+        return! ThothSerializer.RespondJsonSeq bins encoderBin next ctx 
     }
 
 /// An overview of actual stock currently stored in the Storage Machine. Actual stock is defined as all non-empty bins.
@@ -20,7 +22,7 @@ let stockOverview (next: HttpFunc) (ctx: HttpContext) =
     task {
         let dataAccess = ctx.GetService<IStockDataAccess> ()
         let bins = Stock.stockOverview dataAccess
-        return! ThothSerializer.RespondJsonSeq bins Serialization.encoderBin next ctx 
+        return! ThothSerializer.RespondJsonSeq bins encoderBin next ctx 
     }
 
 /// An overview of all products stored in the Storage Machine, regardless what bins contain them.

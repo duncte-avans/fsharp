@@ -4,7 +4,7 @@ module StorageMachine.SimulatedDatabase
 open FsToolkit.ErrorHandling
 open StorageMachine.Stock
 open Common
-open Bin
+open StorageMachine.Bins.Bin
 
 type ParentBin = BinIdentifier
 type NestedBins = NestedBins of BinIdentifier * List<BinIdentifier>

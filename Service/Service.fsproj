@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Compile Include="PostExample.fs" />
+    <Compile Include="Bins\Serialization.fs" />
+    <Compile Include="Bins\Bin.fs" />
     <Compile Include="Stock\Serialization.fs" />
     <Compile Include="Stock\Stock.fs" />
     <Compile Include="Repacking\Repacking.fs" />

@@ -3,6 +3,7 @@ module StorageMachine.HttpHandlers
 
 open Giraffe
 open StorageMachine.Stock
+open StorageMachine.Bins
 open StorageMachine.Repacking
 
 /// Composes all dispatching of HTTP requests into a single Giraffe HTTP handler. This handler is the used to "run"
@@ -13,6 +14,7 @@ let requestHandlers : HttpHandler =
         route "/hello" >=> GET >=> text "Storage machine is running"
         // See the following example on how to process a POST request, decode JSON and return different responses
         route "/number" >=> POST >=> PostExample.processPost
+        Bin.handlers
         // Dispatching and handling of Stock component requests
         Stock.handlers
         // Dispatching and handling of Repacking component requests

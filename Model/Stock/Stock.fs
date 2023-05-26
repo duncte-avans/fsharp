@@ -4,7 +4,8 @@ module StorageMachine.Stock.Stock
 open StorageMachine
 
 open Common
-open Bin
+open StorageMachine.Bins
+open StorageMachine.Bins.Bin
 
 /// For the purposes of basic stock bookkeeping, a product is represented only by its 'PartNumber' and does not have any
 /// other properties. This means that individual products do not have an "identity". Indeed, current software of the
@@ -17,7 +18,7 @@ type Quantity = int
 let getTheContent b = b.Content
 
 /// All products in the given bins.
-let allProducts bins : List<Product> =
+let allProducts (bins: List<Bin>) : List<Product> =
     bins
     |> List.distinct
     |> List.filter Bin.isNotEmpty

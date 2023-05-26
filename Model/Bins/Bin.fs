@@ -1,5 +1,5 @@
 ﻿/// Provides a model of stock focused on bins stored in the Storage Machine.
-module StorageMachine.Stock.Bin
+module StorageMachine.Bins.Bin
 
 open StorageMachine
 open Common
